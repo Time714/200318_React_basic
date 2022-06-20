@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <!-- 引入React核心库 (首先引入) -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 将jsx转为js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        const myId = "aTGuIgU";
+        const myData = "HeLlo,wOrLd!";
+        // 创建虚拟DOM
+        const VDOM =  <h2 id={myId.toLocaleLowerCase()}>{myData.toLocaleLowerCase()}</h2>
+        const test = document.getElementById('test1');
+        // 渲染VDOM到页面上
+        ReactDOM.render(VDOM,document.getElementById('test1'));
+        console.log(VDOM);
+        console.log(test);
+        debugger;
+        // 关于虚拟DOM你要知道的？
+        /*
+            1、虚拟DOM什么（对应js中那一种数据类型）
+                是一个普通Obect对象，只不过内部包含一些React用的一些特殊属性而已。
+            2、虚拟DOM和真实DOM有什么区别？
+                虚拟DOM比较“清”,真实DOM比较“重”。
+                虚拟DOM是React内部在用，无须真实DOM身上那么多属性。
+                虚拟DOM最后都会转换为真实DOM。
+        */
+    </script>
+</body>
+
+</html>

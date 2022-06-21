@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数式创建组件</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <!-- 引入React核心库 （首先引入） -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 将jsx转换为js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //  创建组件  ---- 函数式
+        function Demo(){
+            console.log('@',this); //此处this是undefined，因为经过babel的编译后，开启了严格模式
+            return <h1>我是用函数定义的组件(适用于【简单组件】的定义)</h1>
+        }
+        // 渲染组件到页面
+        ReactDOM.render(<Demo/>,document.getElementById('test'));
+
+        /*
+            上述代码，当执行 ReactDOM.render(<Demo/>......之后发生了什么？)
+            1、React发现<Demo/>
+               1.1标签首字母若为大写：
+                  (1).React检查是否定义了Demo组件（若未定义，报错：Demo is not define）
+                  (2).调用Demo，得到返回的虚拟DOM结构（若没有return，报错）
+               1.2标签首字母若为【小写】：
+                  (1).检查标签是否能和Html预设标签对应上，若能，直接转为同名的HTML标签
+                  (2).若未能和html预设标本对应的上，例如写的是<haha></haha> 界面有效果，但会报错
+            2、把第一步返回虚拟DOM，经过一个特许的diff算法后，转换为真实DOM，放入页面。
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Person类 
+        class Person {
+            // 为啥要写构造器方法？—— 1、接收new该类的时候传入的参数. 2、向类的实例上追加属性
+            constructor(name, age) {
+                //    构造器中this是谁? ——类实例对象
+                this.name = name; // 此句话要干啥，向类的实例对象上追加一个name属性，值为传入的name
+                this.age = age;
+            }
+            // 一般方法
+            speak() { // speack方法放在了Person原型对象上，没放在自身
+                // 这里是程序员自定义speak，方法中——this是类的对象
+                console.log(`我的名字是${this.name},我的年龄是${this.age}岁`);
+            }
+        }
+        // const p = new Person("小刘",18); 
+        // p.speak();
+
+        // student类，是继承Person类的一个子类
+        class Student extends Person {
+            constructor(...args) {
+                super(...args); // 借助super去调用父类的构造器,减少自构造器的代码
+                this.grade = args[args.length-2];
+                this.school = args[args.length-1];
+            }
+            study(){
+                console.log("我学习很努力");
+            }
+        }
+        const p = new Person('tom',20);
+        const s = new Student('tom',20,'高一','atguigu');
+        console.log(p);
+        console.log(s);
+    </script>
+</body>
+
+</html>

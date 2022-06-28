@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom  -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel -->
+    <script src="../js/babel.min.js"></script>
+    <!-- 标签限制 -->
+    <script src="../js/prop-types.js"></script>
+
+
+    <script type="text/babel">
+        // 创建组件
+        class Show extends React.Component{
+
+            myContainer1 = React.createRef();// 创建一个容器，可以存放节点，但只能存在一个
+            myContainer2 = React.createRef();
+            demo = ()=>{
+                console.log(this.myContainer1);
+                console.log(this.myContainer2);
+
+            //    alert(this.myContainer1.current.value);
+            console.log(this.myContainer2.current);
+            }
+            render(){
+                return (
+                    <div>
+                        {/* 如下这种写法是字符串类型ref,react17.x已弃用，官方不推荐 */}
+                        <input ref={this.myContainer1} type="text"/>
+                        <button ref={this.myContainer2} onClick={this.demo}>点我提示左侧内容</button>
+                    </div>
+                )
+            }
+        }
+        // 渲染组件到页面
+        ReactDOM.render(<Show/>,document.getElementById('test'));
+    </script>
+</body>
+
+</html>

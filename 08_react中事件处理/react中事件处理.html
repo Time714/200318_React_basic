@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom  -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel -->
+    <script src="../js/babel.min.js"></script>
+    <!-- 引入prop-type -->
+    <script src="../js/prop-types.js"></script>
+
+
+    <script type="text/babel">
+        class Demo extends React.Component{
+
+            /*
+               React中通过onXxx指定的组件的事件处理函数(注意大小写)
+                   1.React使用的是自定义（合成）事件，而不使用原生DOM事件 ———— 良好的兼容性
+                   2.React中的事件通过事件委托的方式处理（委托到组件最外层的元素）———— 效率高
+                   备注：ref如果能不用，就尽量不用。
+            */ 
+
+            handleBulr = (event)=>{
+                console.log(event.target.value);
+            }
+            handleKeyUp = (event)=>{
+                if(event.keyCode == 13){
+                    console.log(event.target.value);
+                }
+            }
+            render(){
+                return (
+                    <div>
+                        <input placeholder="失去焦点提示" onBlur={this.handleBulr} type="text"/>&nbsp;
+                        <input placeholder="按下回车提示" onKeyUp={this.handleKeyUp} type="text"/>
+                    </div>
+                )
+            }
+        }
+        // 渲染组件
+        ReactDOM.render(<Demo/>,document.getElementById('test'));
+    </script>
+
+
+</body>
+
+</html>

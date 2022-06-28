@@ -27,36 +27,33 @@
         const myId = "aTGuIgU";
         const myData = "HeLlo,wOrLd!";
         // 创建虚拟DOM
-        // const VDOM = React.createElement('h1', {id:myId.toLocaleUpperCase()},myData.toUpperCase());
         const VDOM = (
             <div>
-                <h2 className="title" id={myId.toLowerCase()}>
-                    <span style={{color:'orange'}}>{myData.toLowerCase()}</span>
-                </h2>
-                <h1>你好</h1>
-                <atguigu>中国</atguigu>
+                <h1 className="title" id={myId.toLowerCase()}>
+                <span style={{color:"orange"}}>{myData.toLowerCase()}</span>    
+                </h1>
+                <h1>中华人民共和国</h1>
+                <div>123</div>
             </div>
-        )
-
-        // 渲染React到页面上
+        );
+        // 渲染虚拟DOM到页面上
         ReactDOM.render(VDOM,document.getElementById('test1'));
-
 
         /*
            关于jsx你要知道：
-                1、存在的意义：让程序员更加方便的创建虚拟DOM，让结构和html一样清晰
-                2、jsx经过babel编译，一定转为js
+                1、存在的意义：方便程序员更好的创建虚拟DOM，让它的结构与HTMl的结构一样。
+                2、jsx经过babel编译，转为js
                 3、jsx的语法规则：
                    1、不能使用引号，因为不是字符串
-                   2、标签中混入js表达式，要用{}
-                   3、样式类名不能用class，要用className
-                   4、内联的样式要写成style={{xxx:xxx,xxx:xxx}}的形式
-                   5、必须只能有一个根标签
+                   2、标签混入js表达式，使用{}
+                   3、类名不能使用class，要使用className
+                   4、内联样式要写成style={xxxxx:xxxxx}样式
+                   5、必须使用一个根标签
                    6、标签必须闭合
-                   7、标签的开头字母可以大写，可以小写
-                      如果小写，那么jsx就把你写的标签和HTML内置标签进行对应。
+                   7、标签的开头可以大写，也可以小写
+                      如果小写，那么jsx标签就要和HTML内置标签进行对应。
                         1、如果对应上，就把jsx的标签直接转换为HTML标签，放到页面。
-                        2、如果对应不上，就报错，但是内容可以展示。
+                        2、如果对应不上，报错，但会在页面上展示。
                       如果大写，要特殊解析。
         */
 

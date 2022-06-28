@@ -10,8 +10,7 @@
 </head>
 
 <body>
-  <div id="test1">
-  </div>
+  <div id="test"></div>
   <!-- 引入React核心库 （必须最先引入）-->
   <script type="text/javascript" src="../js/react.development.js"></script>
   <!-- 引入react-dom  -->
@@ -20,18 +19,15 @@
   <script src="../js/babel.min.js"></script>
 
   <script type="text/babel">
-    const myId = "aTGuiGU";
-      const myData = "HelLO,wOrlD!";
-      // 1、创建虚拟DOM
-        // const VDOM = <h2 id={myId.toLowerCase()}>{myData.toLocaleLowerCase()}</h2>
-        const VDOM = (
-          <h2 id={myId.toLowerCase()}>
-            <span>{myData.toLocaleLowerCase()}</span>
-          </h2>
-        )
-      // 2、渲染虚拟DOM到页面
-        ReactDOM.render(VDOM,document.getElementById('test1')); 
-    </script>
+    const myId = "aTGuIgU";
+    const myData = "hElLo,WoRld!";
+    // 创建虚拟DOM
+    const VDOM = <h1 id={myId.toLowerCase()}>
+         <span>{myData.toLocaleLowerCase()}</span>  
+    </h1>
+    // 渲染虚拟DOM到页面上
+    ReactDOM.render(VDOM,document.getElementById('test'))
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非受控组件</title>
+</head>
+<body>
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Login extends React.Component{
+
+            //创建容器
+            usernameRef = React.createRef();
+            pwdRef = React.createRef();
+
+            handleSubmit = (event)=>{
+                event.preventDefault(); // 阻止表单提交
+                const {usernameRef,pwdRef} = this;
+                const username = usernameRef.current.value;
+                const pwd = pwdRef.current.value;
+                alert(`我的名字叫${username},我的密码为${pwd}`);
+            }
+            render(){
+                return(
+                    <div>
+                       <form action="http://www.baidu.com" onSubmit={this.handleSubmit}>
+                           用户名：<input ref={this.usernameRef} type="text" placeholder="请输入用户名"/>
+                           密码：  <input ref={this.pwdRef} type="text" placeholder="请输入密码"/> 
+                           <button type="submit">登录</button>
+                       </form>    
+                    </div>
+                )
+            }
+        }
+        // 渲染组件
+        ReactDOM.render(<Login/>,document.getElementById('test'));
+    </script>
+</body>
+</html>
